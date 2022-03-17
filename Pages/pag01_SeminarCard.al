@@ -11,58 +11,58 @@ page 50101 "CSD Seminar Card"
         {
             group(General)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     AssistEdit = true;
                     ApplicationArea = All;
                     trigger OnAssistEdit();
                     begin
-                        if AssistEdit then
+                        if Rec.AssistEdit then
                             CurrPage.Update;
                     end;
 
 
                 }
-                field("Name"; "Name")
+                field("Name"; Rec."Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Search Name"; "Search Name")
+                field("Search Name"; Rec."Search Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Seminar Duration"; "Seminar Duration")
+                field("Seminar Duration"; Rec."Seminar Duration")
                 {
                     ApplicationArea = All;
                 }
-                field("Minimum Participants"; "Minimum Participants")
+                field("Minimum Participants"; Rec."Minimum Participants")
                 {
                     ApplicationArea = All;
                 }
-                field("Maximum Participants"; "Maximum Participants")
+                field("Maximum Participants"; Rec."Maximum Participants")
                 {
                     ApplicationArea = All;
                 }
-                field("Blocked"; "Blocked")
+                field("Blocked"; Rec."Blocked")
                 {
                     ApplicationArea = All;
                 }
-                field("Last Date Modified"; "Last Date Modified")
+                field("Last Date Modified"; Rec."Last Date Modified")
                 {
                     ApplicationArea = All;
                 }
             }
             group(Invoicing)
             {
-                field("Gen. Prod. Posting"; "Gen.Prod.Posting Group")
+                field("Gen. Prod. Posting"; Rec."Gen.Prod.Posting Group")
                 {
                     ApplicationArea = All;
                 }
-                field("VAT Prod. Posting Group"; "VAT Prod. Posting Group")
+                field("VAT Prod. Posting Group"; Rec."VAT Prod. Posting Group")
                 {
                     ApplicationArea = All;
                 }
-                field("Seminar Price"; "Seminar Price")
+                field("Seminar Price"; Rec."Seminar Price")
                 {
                     ApplicationArea = All;
                 }
