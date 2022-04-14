@@ -1,5 +1,6 @@
 table 50104 "CSD Seminar Comment Line"
-//Lab5.3 task 1
+//Lab5.3 task 
+// Lab 7.3 task 2
 {
 
     Caption = 'Seminar Comment Line';
@@ -9,11 +10,9 @@ table 50104 "CSD Seminar Comment Line"
 
     fields
     {
-        field(10; "Table Name"; Option)
+        field(10; "Table Name"; Enum "Table Name ")
         {
             Caption = 'Table Name';
-            OptionMembers = "Seminar","Seminar Registration Header","Posted Seminar Reg.Header";
-            OptionCaption = 'Seminar,Seminar Registration, Posted Seminar Registration';
             DataClassification = ToBeClassified;
         }
         field(20; "Document Line No."; Integer)
@@ -25,7 +24,13 @@ table 50104 "CSD Seminar Comment Line"
         {
             Caption = 'No.';
             DataClassification = ToBeClassified;
-            TableRelation = if ("Table Name" = const(Seminar)) "CSD Seminar";
+            TableRelation = if ("Table Name" = const(Seminar)) "CSD Seminar"
+            else
+            if ("Table Name" = const(" Seminar Registration Header")) "CSD Seminar Reg. Header"
+            else
+            if ("Table Name" = const(" Posted Seminar Reg.Header")) "CSD Posted Seminar Reg. Header";
+
+
         }
         field(40; "Line No."; Integer)
         {
@@ -56,4 +61,17 @@ table 50104 "CSD Seminar Comment Line"
             Clustered = true;
         }
     }
+    procedure SetupNewLine()
+    var
+        SeminarCommentLine: Record "CSD Seminar Comment Line";
+    begin
+        SeminarCommentLine.SetRange("Table Name", "Table Name");
+        SeminarCommentLine.SetRange("No.", "No.");
+        SeminarCommentLine.SetRange("Document Line No.",
+        "Document Line No.");
+        SeminarCommentLine.SetRange("Date", WorkDate);
+        if SeminarCommentLine.IsEmpty then
+            Date := WorkDate;
+
+    end;
 }

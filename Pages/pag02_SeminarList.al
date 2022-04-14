@@ -6,7 +6,7 @@ page 50102 "CSD Seminar List"
     SourceTable = "CSD Seminar";
     Caption = 'Seminar List';
     Editable = false;
-    CardPageId = 50101;
+    CardPageId = "CSD Seminar Card";
     ApplicationArea = All;
 
     layout
@@ -66,12 +66,14 @@ page 50102 "CSD Seminar List"
                 action("Co&mments")
                 {
                     RunObject = page "CSD Seminar Comment Sheet";
-                    RunPageLink = "Table Name" = const(Seminar),
-                    "No." = field("No.");
+                    RunPageLink = "Table Name" = const("Seminar"),
+                     "No." = field("No.");
                     Image = Comment;
                     Promoted = true;
                     PromotedIsBig = true;
                     PromotedOnly = true;
+                    PromotedCategory = Process;
+
                 }
             }
         }

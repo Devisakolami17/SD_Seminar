@@ -99,6 +99,7 @@ page 50101 "CSD Seminar Card"
                     Promoted = true;
                     PromotedIsBig = true;
                     PromotedOnly = true;
+                    ApplicationArea = All;
                 }
             }
         }

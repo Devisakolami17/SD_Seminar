@@ -75,9 +75,7 @@ table 50101 "CSD Seminar"
             FieldClass = FlowField;
             CalcFormula = exist("CSD Seminar Comment Line"
             where("Table Name" = const("Seminar"),
-              "No." = field("No.")));
-
-
+               "No." = field("No.")));
         }
         field(100; "Seminar Price"; Decimal)
         {
@@ -166,24 +164,21 @@ table 50101 "CSD Seminar"
     begin
 
         CommentLine.Reset;
-        CommentLine.SetRange("Table Name",
-        CommentLine."Table Name"::Seminar);
-        CommentLine.SetRange("No.", "No.");
+        CommentLine.SetRange("Table Name", CommentLine."Table Name"::Seminar);
+        CommentLine.SetRange("No.", Rec."No.");
         CommentLine.DeleteAll;
     end;
 
 
     procedure AssistEdit(): Boolean;
     begin
-        with Seminar do begin
-            Seminar := Rec;
-            SeminarSetup.get;
-            SeminarSetup.TestField("Seminar Nos.");
-            if NoSeriesMgt.SelectSeries(SeminarSetup."Seminar Nos.", xRec."No.Series", "No.Series") then begin
-                NoSeriesMgt.SetSeries("No.");
-                Rec := Seminar;
-                exit(true);
-            end;
+        Seminar := Rec;
+        SeminarSetup.get;
+        SeminarSetup.TestField("Seminar Nos.");
+        if NoSeriesMgt.SelectSeries(SeminarSetup."Seminar Nos.", xRec."No.Series", Seminar."No.Series") then begin
+            NoSeriesMgt.SetSeries(Seminar."No.");
+            Rec := Seminar;
+            exit(true);
         end;
     end;
 
